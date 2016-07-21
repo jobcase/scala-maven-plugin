@@ -72,7 +72,7 @@ public class ScalaRunMojo extends ScalaMojoSupport {
         JavaMainCaller jcmd = null;
         Toolchain toolchain = toolchainManager.getToolchainFromBuildContext("jdk", session);
         if (StringUtils.isNotEmpty(mainClass)) {
-            jcmd = new JavaMainCallerByFork(this, mainClass, MainHelper.toMultiPath(project.getTestClasspathElements()), jvmArgs, args, forceUseArgFile, toolchain);
+            jcmd = new JavaMainCallerByFork(this, mainClass, MainHelper.toMultiPath(project.getTestClasspathElements()), jvmArgs, getScalaOptions().toArray(new String[0]), forceUseArgFile, toolchain);
         } else if ((launchers != null) && (launchers.length > 0)) {
             if (StringUtils.isNotEmpty(launcher)) {
                 for(int i = 0; (i < launchers.length) && (jcmd == null); i++) {
